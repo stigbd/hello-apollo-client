@@ -8,6 +8,7 @@ const GET_BOOKS = gql`
       id
       title
       author
+      year
     }
   }
 `;
@@ -19,11 +20,15 @@ function DisplayBooks() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.books.map(({ id, title, author }) => (
+  return data.books.map(({ id, title, author, year }) => (
     <div key={id}>
       <h3>{title}</h3>
-      <b>Author:</b>
-      <p>{author}</p>
+      <p>
+        <b>Author:</b> {author}
+      </p>
+      <p>
+        <b>Year:</b> {year}
+      </p>
       <br />
     </div>
   ));
